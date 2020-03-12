@@ -1,0 +1,7 @@
+version: "3"
+services:
+  web:
+    build: .
+    image: docimg/baseimg_mysql_php73_apache
+    ports:
+      - "8080:80"
