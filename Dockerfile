@@ -28,6 +28,7 @@ RUN sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list \
     && chown -R www-data:www-data /var/www/html \    
     && mv /tmp/docker-php-ext-mysqli.ini /usr/local/etc/php/conf.d \
     && mv /tmp/docker-php-ext-pdo_mysql.ini /usr/local/etc/php/conf.d \
+    && service apache2 start \
     # clear
     && rm -rf /tmp/*
 
