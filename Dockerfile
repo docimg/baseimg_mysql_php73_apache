@@ -2,13 +2,17 @@ FROM php:7.3-apache
 
 LABEL Organization="docimg" Author="hdxw <909712710@qq.com>"
 
-MAINTAINER hdxw@docimg <909712710@qq.com>
+LABEL maintainer="909712710@qq.com"
 
 COPY _files /tmp/
 COPY src /var/www/html
 
-RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories \
-    && apk add --update --no-cache tar mysql mysql-client \
+# Get Debian up-to-date
+RUN sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list \
+    && sed -i 's/security.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list \
+    && apt-get update \
+    && DEBIAN_FRONTEND=noninteractive apt-get install -y mariadb-server \
+    && DEBIAN_FRONTEND=noninteractive apt-get install -y mariadb-client \
     # mysql ext
     && docker-php-source extract \
     && docker-php-ext-install pdo_mysql mysqli \

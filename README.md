@@ -22,6 +22,4 @@
 
 ```
 FROM docimg/baseimg_mysql_php73_apache
-
-COPY src /var/www/html
 ```
