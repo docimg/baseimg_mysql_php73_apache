@@ -22,9 +22,6 @@
 
 ```bash
 FROM docimg/baseimg_mysql_php73_apache
-
-# 自定义脚本
-COPY flag.sh /flag.sh
 ```
 
 ### Deploy
