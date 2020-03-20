@@ -28,7 +28,7 @@ FROM docimg/baseimg_mysql_php73_apache
 
 ```
 docker build -t docimg/baseimg_mysql_php73_apache .
-docker push
+docker push docimg/baseimg_mysql_php73_apache
 
 docker stop baseimg_mysql_php73_apache
 docker rm baseimg_mysql_php73_apache

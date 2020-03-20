@@ -29,7 +29,6 @@ RUN sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list \
     && mv /tmp/docker-php-ext-mysqli.ini /usr/local/etc/php/conf.d \
     && mv /tmp/docker-php-ext-pdo_mysql.ini /usr/local/etc/php/conf.d \
     && echo 'ServerName 0.0.0.0:80' >> /etc/apache2/apache2.conf \
-    && service apache2 start \
     # clear
     && rm -rf /tmp/*
 
