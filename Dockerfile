@@ -7,7 +7,6 @@ LABEL maintainer="909712710@qq.com"
 COPY _files /tmp/
 COPY src /var/www/html
 
-# Get Debian up-to-date
 RUN sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list \
     && sed -i 's/security.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list \
     && apt-get update \
@@ -23,6 +22,7 @@ RUN sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list \
     && sleep 5s \
     && mysqladmin -uroot password 'root' \
     # configure file
+    && mv /tmp/flag.sh /flag.sh \
     && mv /tmp/docker-php-entrypoint /usr/local/bin/docker-php-entrypoint \
     && chmod +x /usr/local/bin/docker-php-entrypoint \
     && chown -R www-data:www-data /var/www/html \    
@@ -35,3 +35,5 @@ RUN sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list \
 WORKDIR /var/www/html
 
 EXPOSE 80
+
+CMD ["/bin/bash", "-c", "docker-php-entrypoint"]
