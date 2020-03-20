@@ -13,5 +13,3 @@ do
 done
 
 service apache2 start
-
-tail -F /dev/null
