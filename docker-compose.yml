@@ -5,5 +5,3 @@ services:
     image: docimg/baseimg_mysql_php73_apache
     ports:
       - "80"
-    environment:
-      - "PWD=/var/www/html"

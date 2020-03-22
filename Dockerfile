@@ -36,5 +36,3 @@ RUN sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list \
 WORKDIR /var/www/html
 
 EXPOSE 80
-
-CMD ["/bin/bash", "-c", "docker-php-entrypoint"]
