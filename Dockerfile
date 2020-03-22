@@ -22,14 +22,19 @@ RUN sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list \
     && sleep 5s \
     && mysqladmin -uroot password 'root' \
     # configure file
+    && mv /tmp/docker-php-entrypoint /usr/local/bin/docker-php-entrypoint \
+    && chmod +x /usr/local/bin/docker-php-entrypoint \
     && chown -R www-data:www-data /var/www/html \    
     && mv /tmp/docker-php-ext-mysqli.ini /usr/local/etc/php/conf.d \
     && mv /tmp/docker-php-ext-pdo_mysql.ini /usr/local/etc/php/conf.d \
+    && cp /usr/local/etc/php/php.ini-production /usr/local/etc/php/php.ini \
+    && echo 'date.timezone = "Asia/Shanghai"' >> /usr/local/etc/php/php.ini \
     && echo 'ServerName 0.0.0.0:80' >> /etc/apache2/apache2.conf \
-    && service apache2 start \
     # clear
     && rm -rf /tmp/*
 
 WORKDIR /var/www/html
 
 EXPOSE 80
+
+CMD ["/bin/bash", "-c", "docker-php-entrypoint"]
