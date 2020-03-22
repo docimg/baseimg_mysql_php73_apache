@@ -24,7 +24,7 @@ RUN sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list \
     # configure file
     && mv /tmp/docker-php-entrypoint /usr/local/bin/docker-php-entrypoint \
     && chmod +x /usr/local/bin/docker-php-entrypoint \
-    && chown -R www-data:www-data /var/www/html \    
+    && chown -R www-data:www-data /var/www/html \
     && mv /tmp/docker-php-ext-mysqli.ini /usr/local/etc/php/conf.d \
     && mv /tmp/docker-php-ext-pdo_mysql.ini /usr/local/etc/php/conf.d \
     && cp /usr/local/etc/php/php.ini-production /usr/local/etc/php/php.ini \
